@@ -29,7 +29,7 @@ import com.johanpeitz.apparat.utils.ObjectPool;
 class Apparat {
 	public static inline var MAJOR_VERSION : Int = 0;
 	public static inline var MINOR_VERSION : Int = 6;
-	public static inline var INTERNAL_VERSION : Int = 0;
+	public static inline var INTERNAL_VERSION : Int = 1;
 
 	public static inline var COLOR_RED : Int = 0xFF5D5D;
 	public static inline var COLOR_GREEN : Int = 0x5DFC5D;
