@@ -1,6 +1,6 @@
 CHANGELOG
 
-2015-mm-dd, 0.6.0, "a new foundation"
+2015-03-01, 0.6.0, "a new foundation"
 * dropped as3 in favour for haxe (haxe.org)
 * put library in proper package
 * fixed bug in grid vs box collision code
