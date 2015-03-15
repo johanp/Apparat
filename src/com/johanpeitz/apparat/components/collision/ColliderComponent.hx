@@ -30,6 +30,11 @@ class ColliderComponent extends Component {
 	 * Specifies whether this collider is solid or just a trigger.
 	 */
 	public var solid : Bool = true;
+	
+	/**
+	 * Specifies whether this collider will budge or not when pushed.
+	 */
+	public var fixed : Bool = false;
 
 	/**
 	 * Callback invoked when a collision starts.
@@ -50,12 +55,13 @@ class ColliderComponent extends Component {
 	 * Constructs a new collider.
 	 * @param	pSolid	Specifies whether collider should be solid.
 	 */
-	public function new( pSolid : Bool = true ) {
+	public function new( pSolid : Bool = true, pFixed : Bool = false ) {
 		super( );
 
 		_currentColliders = new Array<ColliderComponent>();
 
 		solid = pSolid;
+		fixed = pFixed;
 
 		priority = 1;
 	}

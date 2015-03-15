@@ -148,14 +148,38 @@ class CollisionHandler extends Handler {
 
 		// push in the smallest direction (if both boxes are solid)
 		if ( a.solid && b.solid ) {
-			if ( Math.abs( _overlap.x ) > Math.abs( _overlap.y ) ) {
-				a.entity.transform.position.y -= _overlap.y / 2;
-				b.entity.transform.position.y += _overlap.y / 2;
-			} else {
-				a.entity.transform.position.x -= _overlap.x / 2;
-				b.entity.transform.position.x += _overlap.x / 2;
+			var bca : BodyComponent = cast( a.entity.getComponentByClass( BodyComponent ), BodyComponent);
+			var bcb : BodyComponent = cast( b.entity.getComponentByClass( BodyComponent ), BodyComponent);
+			if ( !a.fixed && !b.fixed ) {
+				if ( Math.abs( _overlap.x ) > Math.abs( _overlap.y ) ) {
+					a.entity.transform.position.y -= _overlap.y / 2;
+					b.entity.transform.position.y += _overlap.y / 2;
+				} else {
+					a.entity.transform.position.x -= _overlap.x / 2;
+					b.entity.transform.position.x += _overlap.x / 2;
+				}
 			}
+			else if ( a.fixed && !b.fixed ) {
+				if ( Math.abs( _overlap.x ) > Math.abs( _overlap.y ) ) {
+					b.entity.transform.position.y += _overlap.y;
+					if ( bcb != null ) bcb.velocity.y = 0;
+				} else {
+					b.entity.transform.position.x += _overlap.x;
+					if ( bcb != null ) bcb.velocity.x = 0;
+				}
+			}
+			else if ( !a.fixed && b.fixed ) {
+				if ( Math.abs( _overlap.x ) > Math.abs( _overlap.y ) ) {
+					a.entity.transform.position.y -= _overlap.y;
+					if ( bca != null ) bca.velocity.y = 0;
+				} else {
+					a.entity.transform.position.x -= _overlap.x;
+					if ( bca != null ) bca.velocity.x = 0;
+				}
+			}
+			// else both fixed, not much to do
 		}
+			
 
 		return _overlap;
 	}

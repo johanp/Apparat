@@ -16,9 +16,10 @@ class BoxColliderComponent extends ColliderComponent {
 	 * @param	pWidth	Width of box.
 	 * @param	pHeight	Height of box.
 	 * @param	pSolid	Specifies whether collider should be solid or not.
+	 * @param	pFixed	Specifies whether collider will move at all on collision with other colliders.
 	 */
-	public function new( pWidth : Float, pHeight : Float, pSolid : Bool = true ) {
-		super( pSolid );
+	public function new( pWidth : Float, pHeight : Float, pSolid : Bool = true, pFixed : Bool = false ) {
+		super( pSolid, pFixed );
 		collisionBox = new AABB( pWidth, pHeight, pWidth / 2, pHeight / 2 );
 	}
 
